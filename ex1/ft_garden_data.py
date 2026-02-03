@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+from typing import List
+
 """
 Exercise 1: Garden Data Organizer
 """
@@ -27,13 +30,14 @@ def main():
     Main function to create and display plant data.
     """
 
+    garden: List[Plant] = []
     rose: Plant = Plant("Rose", 25, 30)
     sunflower: Plant = Plant("Sunflower", 80, 45)
     cactus: Plant = Plant("Cactus", 15, 120)
+    garden.extend([rose, sunflower, cactus])
     print("=== Gardden Plant Registry ===")
-    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
-    print(f"{sunflower.name}: {sunflower.height}cm, {sunflower.age} days old")
-    print(f"{cactus.name}: {cactus.height}cm, {cactus.age} days old")
+    for plant in garden:
+        print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
 
 
 if __name__ == "__main__":
