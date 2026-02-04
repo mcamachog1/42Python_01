@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-from typing import List
-
 """
 Exercise 1: Garden Data Organizer
 """
 
 
 class Plant:
+
     """
     A class to represent a plant in the garden.
     """
+
     def __init__(self, name: str, height: float, age_days: int):
         """
         Allocate memory to create a new Plant instance.
@@ -30,7 +30,7 @@ def main():
     Main function to create and display plant data.
     """
 
-    garden: List[Plant] = []
+    garden: list[Plant] = []
     rose: Plant = Plant("Rose", 25.0, 30)
     sunflower: Plant = Plant("Sunflower", 80.0, 45)
     cactus: Plant = Plant("Cactus", 15.0, 120)

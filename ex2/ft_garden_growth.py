@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from typing import List
 from ft_garden_data import Plant
 
 """
@@ -21,7 +20,7 @@ class GrowingPlant(Plant):
             growth_rate: float) -> None:
         """
         Allocate memory to create a new Plant Growing
-        instance and put it init data.
+        instance and save init data.
 
         Args:
             name (str): plant name.
@@ -73,7 +72,7 @@ class GrowingPlant(Plant):
 
 def main():
 
-    garden: List[Plant] = []
+    garden: list[Plant] = []
     rose: GrowingPlant = GrowingPlant("Rose", 25, 30, 1)
     sunflower: GrowingPlant = GrowingPlant("Sunflower", 80, 45, 2)
     cactus: GrowingPlant = GrowingPlant("Cactus", 15, 120, 0.5)
