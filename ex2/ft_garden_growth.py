@@ -1,43 +1,52 @@
 #!/usr/bin/env python3
 
 from typing import List
+from ft_garden_data import Plant
 
 """
 Exercise 2: Plant Growth Simulator
 """
 
 
-class Plant:
+class GrowingPlant(Plant):
     """
-    A class to represent a plant in the garden.
+    A class to represent a plant growing.
     """
 
-    def __init__(self, name: str, height: int, age: int, growth_rate: int):
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            age_days: int,
+            growth_rate: float) -> None:
         """
-        Allocate memory to create a new Plant instance.
+        Allocate memory to create a new Plant Growing
+        instance and put it init data.
 
         Args:
             name (str): plant name.
-            height (int): plant height in centimeters.
-            age (int): plant age in days.
+            height (float): plant height in centimeters.
+            age_days (int): plant age in days.
+            growth_rate (float): plant growth rate in centimeters per day.
         """
-        self.name = name
-        self.height = height
-        self.age = age
-        self.growth_rate = growth_rate  # centimeters per day
 
-    def grow(self, cm: int) -> None:
+        super().__init__(name, height, age_days)
+        self.growth_rate: float = growth_rate
+        self.last_growth: float = 0.0
+
+    def grow(self, cm: float) -> None:
         """
         Add cm to the plant height.
 
         Args:
-            cm (int): number of centimeters to add to the plant height.
+            cm (float): number of centimeters to add to the plant height.
         """
 
         if cm > 0:
             self.height += cm
+            self.last_growth = cm
 
-    def add_age(self, days: int) -> None:
+    def age(self, days: int) -> None:
         """
         Add days to the plant age.
 
@@ -46,7 +55,7 @@ class Plant:
         """
 
         if days > 0:
-            self.age += days
+            self.age_days += days
             self.grow(self.growth_rate * days)
 
     def get_info(self) -> str:
@@ -57,25 +66,27 @@ class Plant:
             str: a string containing the plant's name, height, and age.
         """
 
-        return f"{self.name}: {self.height}cm, {self.age} days old"
+        return (
+            f"{self.name}: {self.height}cm, {self.age_days} days old"
+        )
 
 
 def main():
 
     garden: List[Plant] = []
-    rose: Plant = Plant("Rose", 25, 30, 1)
-    sunflower: Plant = Plant("Sunflower", 80, 45, 2)
-    cactus: Plant = Plant("Cactus", 15, 120, 1)
+    rose: GrowingPlant = GrowingPlant("Rose", 25, 30, 1)
+    sunflower: GrowingPlant = GrowingPlant("Sunflower", 80, 45, 2)
+    cactus: GrowingPlant = GrowingPlant("Cactus", 15, 120, 0.5)
     garden.extend([rose, sunflower, cactus])
     print("=== Day 1 ===")
     for plant in garden:
         print(plant.get_info())
     for plant in garden:
-        plant.add_age(7)
+        plant.age(6)
     print("=== Day 7 ===")
     for plant in garden:
         print(plant.get_info())
-        print(f"Growth this week: +{plant.growth_rate * 7}cm")
+        print(f"Growth this week: +{plant.last_growth}cm")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ def main() -> None:
     The main function of the program.
     """
     name: str = "Rose"
-    height: int = 25
+    height: float = 25.0
     age: int = 30
     print("=== Welcome to My Garden ===")
     print(f"Plant: {name}")
