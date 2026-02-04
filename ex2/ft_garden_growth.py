@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-from ft_garden_data import Plant
-
 """
 Exercise 2: Plant Growth Simulator
 """
 
 
-class GrowingPlant(Plant):
+class GrowingPlant():
     """
     A class to represent a plant growing.
     """
@@ -29,7 +27,9 @@ class GrowingPlant(Plant):
             growth_rate (float): plant growth rate in centimeters per day.
         """
 
-        super().__init__(name, height, age_days)
+        self.name = name
+        self.height = height
+        self.age_days = age_days
         self.growth_rate: float = growth_rate
         self.last_growth: float = 0.0
 
@@ -72,7 +72,7 @@ class GrowingPlant(Plant):
 
 def main():
 
-    garden: list[Plant] = []
+    garden: list[GrowingPlant] = []
     rose: GrowingPlant = GrowingPlant("Rose", 25, 30, 1)
     sunflower: GrowingPlant = GrowingPlant("Sunflower", 80, 45, 2)
     cactus: GrowingPlant = GrowingPlant("Cactus", 15, 120, 0.5)
