@@ -47,14 +47,15 @@ class Flower(Plant):
 
     def bloom(self) -> str:
         """
-        Simulate the flower blooming.
+        Simulate the blooming of the flower.
+        Returns:
+            str: blooming message.
         """
         return f"\n{self.name} is blooming beautifully!"
 
     def hello(self) -> str:
         """
         Return a greeting message from the flower.
-
         Returns:
             str: greeting message.
         """
@@ -92,7 +93,9 @@ class Tree(Plant):
 
     def produce_shade(self) -> str:
         """
-        Simulate the tree producing shade.
+        Calculate and return the shade area produced by the tree.
+        Returns:
+            str: shade area information.       
         """
 
         trunk_m: float = self.trunk_diameter / 100
@@ -105,7 +108,6 @@ class Tree(Plant):
     def hello(self) -> str:
         """
         Return a greeting message from the tree.
-
         Returns:
             str: greeting message.
         """
@@ -148,7 +150,6 @@ class Vegetable(Plant):
     def hello(self) -> str:
         """
         Return a greeting message from the vegetable.
-
         Returns:
             str: greeting message.
         """
