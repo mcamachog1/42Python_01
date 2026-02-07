@@ -95,7 +95,7 @@ class Tree(Plant):
         """
         Calculate and return the shade area produced by the tree.
         Returns:
-            str: shade area information.       
+            str: shade area information.
         """
 
         trunk_m: float = self.trunk_diameter / 100
