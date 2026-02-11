@@ -11,7 +11,7 @@ class Plant:
     A class to represent a plant in the garden.
     """
 
-    def __init__(self, name: str, height: float, age_days: int):
+    def __init__(self, name: str, height: float, age_days: int) -> None:
         """
         Allocate memory to create a new Plant instance.
 
@@ -20,12 +20,12 @@ class Plant:
             height (float): plant height in centimeters.
             age_days (int): plant age in days.
         """
-        self.name = name
-        self.height = height
-        self.age_days = age_days
+        self.name: str = name
+        self.height: float = height
+        self.age_days: int = age_days
 
 
-def main():
+def main() -> None:
     """
     Main function to create and display plant data.
     """

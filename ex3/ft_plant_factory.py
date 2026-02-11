@@ -1,9 +1,29 @@
 #!/usr/bin/env python3
 
-from ft_garden_data import Plant
+
 """
 Exercise 3: Plant Factory
 """
+
+
+class Plant:
+
+    """
+    A class to represent a plant in the garden.
+    """
+
+    def __init__(self, name: str, height: float, age_days: int) -> None:
+        """
+        Allocate memory to create a new Plant instance.
+
+        Args:
+            name (str): plant name.
+            height (float): plant height in centimeters.
+            age_days (int): plant age in days.
+        """
+        self.name: str = name
+        self.height: float = height
+        self.age_days: int = age_days
 
 
 def plant_factory(
@@ -30,12 +50,11 @@ def plant_factory(
     return garden
 
 
-def main():
+def main() -> None:
     names: list[str] = ["Rose", "Sunflower", "Cactus", "Palm", "Tulip"]
     heights: list[float] = [25.0, 80.0, 15.0, 110.8, 30.5]
     ages: list[int] = [30, 45, 120, 180, 25]
-    plants: list[Plant]
-    plants = plant_factory(names, heights, ages)
+    plants: list[Plant] = plant_factory(names, heights, ages)
     print("=== Plant Factory Output===")
     for plant in plants:
         print(

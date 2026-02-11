@@ -70,7 +70,7 @@ class GrowingPlant():
         )
 
 
-def main():
+def main() -> None:
 
     garden: list[GrowingPlant] = []
     rose: GrowingPlant = GrowingPlant("Rose", 25, 30, 1)

@@ -58,7 +58,12 @@ class SecurePlant:
         if height > self.__height:
             self.__height = height
             print(f"Height updated: {height}cm [OK]")
-        if (height < self.__height):
+        elif (height < 0):
+            print(
+                f"\nInvalid operation attempted:"
+                f" height {height}cm [REJECTED]")
+            print("Security: Height cannot be negative")
+        elif (height < self.__height):
             print(
                 f"\nInvalid operation attempted:"
                 f" height {height}cm [REJECTED]")
@@ -81,10 +86,16 @@ class SecurePlant:
             age_days (int): The new age of the plant in days.
         """
 
-        if age_days >= self.__age_days:
+        if age_days > self.__age_days:
             self.__age_days = age_days
             print(f"Age updated: {age_days} days [OK]")
-        else:
+        elif age_days < 0:
+            print(
+                f"\nInvalid operation attempted:"
+                f" age {age_days} days [REJECTED]"
+            )
+            print("Security: Age cannot be negative")
+        elif (age_days < self.__age_days):
             print(
                 f"\nInvalid operation attempted:"
                 f" age {age_days} days [REJECTED]"
@@ -98,8 +109,11 @@ def main() -> None:
     print(f"Plant created: {plant.name}")
     plant.height = 35.0  # Valid operation
     plant.age_days = 150  # Valid operation
+    print()
     plant.height = -5  # Invalid operation
+    plant.height = 15.0  # Invalid operation
     plant.age_days = 90  # Invalid operation
+    plant.age_days = -3  # Invalid operation
     print(
         f"\nCurrent plant: {plant.name} "
         f"({plant.height}cm, {plant.age_days} days)"

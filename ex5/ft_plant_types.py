@@ -11,7 +11,7 @@ class Plant:
     A class to represent a plant.
     """
 
-    def __init__(self, name: str, height: float, age_days: int):
+    def __init__(self, name: str, height: float, age_days: int) -> None:
         """
         Allocate memory to create a new Plant instance.
 
@@ -31,7 +31,12 @@ class Flower(Plant):
     A class to represent a flower, inheriting from Plant.
     """
 
-    def __init__(self, name: str, height: float, age_days: int, color: str):
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            age_days: int,
+            color: str) -> None:
         """
         Allocate memory to create a new Flower instance.
 
@@ -160,7 +165,7 @@ class Vegetable(Plant):
         )
 
 
-def main():
+def main() -> None:
     plants: list[Plant] = []
     flower: Flower = Flower("Rose", 30.0, 25, "red")
     tulip: Flower = Flower("Tulip", 20.0, 15, "yellow")

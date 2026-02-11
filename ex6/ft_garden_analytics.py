@@ -133,6 +133,10 @@ class GardenManager():
 
     @classmethod
     def create_garden_network(cls) -> int:
+        """ Print all gardens created. """
+        print("\nGarden managers:")
+        for garden in cls.all_gardens:
+            print(garden.garden_name)
         """Returns the total number of gardens."""
         return len(cls.all_gardens)
 
@@ -170,16 +174,15 @@ class GardenManager():
                 manager (GardenManager): The garden manager
                 for which to generate the report.
             """
-            for garden in GardenManager.all_gardens:
-                pass
+            total_gardens = GardenManager.create_garden_network()
             print(
                 f"Total gardens managed: "
-                f"{GardenManager.create_garden_network()}\n")
+                f"{total_gardens}\n")
 
         def calculate_garden_score(self, manager: 'GardenManager') -> int:
             """
             Calculates the total score for a specific garden.
-            Score = Sum of heights + specific bonuses.
+            Score = Sum of heights + 10 + specific bonuses.
             """
             total_score = 0
             for plant in manager.plants:
@@ -206,99 +209,18 @@ class GardenManager():
                         f", {plant.flower_color} flowers (blooming), "
                         f"Prize points: {plant.prize_points}")
             total_plants: int = len(manager.plants)
-            total_growth: float = sum(plant.growth for plant in manager.plants)
+            total_growth: float = 0
+            for plant in manager.plants:
+                total_growth += plant.growth
             print(
                 f"\nPlants added: {total_plants},"
                 f" Total growth: {total_growth}cm")
             print(f"{self.get_plant_counts(manager.plants)}")
 
 
-def test_plant() -> None:
-    # Create a plant instance
-    my_plant = Plant(30.0, "Sunflower")
-
-    # Print the plant's name and height
-    print(f"Plant Name: {my_plant.name}")
-    print(f"Plant Height: {my_plant.height} cm")
-
-    # Update the plant's height
-    my_plant.height = 35.0
-    print(f"Updated Plant Height: {my_plant.height} cm")
-
-    # Attempt to set an invalid height (negative)
-    try:
-        my_plant.height = -5.0
-    except ValueError as e:
-        print(e)
-
-    # Attempt to set an invalid height (decrease)
-    try:
-        my_plant.height = 25.0
-    except ValueError as e:
-        print(e)
-    # Grow the plant
-    try:
-        my_plant.grow(5.0)
-    except ValueError as e:
-        print(e)
-    # Attempt to grow the plant with an invalid amount (negative)    try:
-        my_plant.grow(-2.0)
-    except ValueError as e:
-        print(e)
-    # Attempt to grow the plant with an invalid amount (zero)
-    try:
-        my_plant.grow(0.0)
-    except ValueError as e:
-        print(e)
-    # Print the final height of the plant
-    print(f"Final Plant Height: {my_plant.height} cm")
-
-
-def test_flowering() -> None:
-    # Create a flowering plant instance
-    my_flowering_plant = FloweringPlant("Rose", 25.0, "Red")
-
-    # Print the flowering plant's name, height, and flower color
-    print(f"Flowering Plant Name: {my_flowering_plant.name}")
-    print(f"Flowering Plant Height: {my_flowering_plant.height} cm")
-    print(f"Flowering Plant Flower Color: {my_flowering_plant.flower_color}")
-
-    # Call the bloom method and print the result
-    print(my_flowering_plant.bloom())
-
-
-def test_prize_flower() -> None:
-    my_prize_flower = PrizeFlower("Rosa", 25, "yellow", 2)
-    print(
-        f"name: {my_prize_flower.name}, "
-        f"{my_prize_flower.height}cm, "
-        f"{my_prize_flower.flower_color}")
-    print(my_prize_flower.get_points())
-
-
-def test_garden_manager() -> None:
-    manager1 = GardenManager("Alice")
-    manager2 = GardenManager("Bob")
-
-    plant1 = Plant("Sunflower", 30)
-    plant2 = FloweringPlant("Rose", 25.0, "red")
-    plant3 = PrizeFlower("Rosa", 25, "yellow", 2)
-
-    manager1.add_plant(plant1)
-    manager1.add_plant(plant2)
-    manager2.add_plant(plant3)
-
-    GardenManager.GardenStats.generate_report()
-
-
-if __name__ == "__main__":
-    # test_plant()
-    # test_flowering()
-    # test_prize_flower()
-    # test_garden_manager()
+def main() -> None:
     alice = GardenManager("Alice")
     bob = GardenManager("Bob")
-    ana = GardenManager("Ana")
     try:
         oak_tree = Plant("Oak Tree", 100)
         rose = FloweringPlant("Rose", 25, "red")
@@ -332,3 +254,7 @@ if __name__ == "__main__":
         f" (should be True)")
     print(f"Garden scores - Alice: {alice_score}, Bob: {bob_score}")
     stats.network_report()
+
+
+if __name__ == "__main__":
+    main()
